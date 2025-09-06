@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         GIT_BRANCH = "staging" // Nhanh git build
-        GIT_REPO_NAME = "github.com/ltrongtinhdev/bt5"
+        GIT_REPO_NAME = "github.com/ltrongtinhdev/cuoikhoa"
         TELEGRAM_BOT_TOKEN = credentials('telegram-token') // Telegram bot access token
         TELEGRAM_CHAT_ID = credentials('telegram-chat-id') // Telegram bot chat id
         DOCKER_ENDPOINT = "ltrongtinh97" //Docker user Hub hoac Docker Private Resistry ENDPOINT
