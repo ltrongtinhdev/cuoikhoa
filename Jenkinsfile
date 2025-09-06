@@ -60,6 +60,22 @@ pipeline {
                     }
                 }
         }
+        stage('Deploy') {
+            steps {
+                script {
+                    try {
+                        input(
+                            message: 'Bạn có muốn deploy không?',
+                            ok: 'Deploy ngay!',
+                            submitterParameter: 'APPROVER'
+                        )
+                        echo "Deploying..."
+                    } catch (err) {
+                        echo "Người dùng đã từ chối deploy hoặc huỷ input"
+                    }
+                }
+            }
+        }
         stage('Deploy to Servers') {
             steps {
                 script {
