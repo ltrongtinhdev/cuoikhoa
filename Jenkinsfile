@@ -11,6 +11,7 @@ pipeline {
         TAG = "${GIT_BRANCH}"."${VERSION}.${env.BUILD_NUMBER}"
         IMAGE_NAME = "${DOCKER_ENDPOINT}/${DOCKER_NAME}"
         SSH_USER = "admin01"
+        PORT = 8900
     }
     stages {
         stage('Clone Repository') {
@@ -67,7 +68,7 @@ pipeline {
                         sh '''
                             #!/bin/bash
                             echo "Deploying to server"
-                            ansible ${GIT_BRANCH} -i inventory.ini -m shell -a "sudo docker pull ${IMAGE_NAME}:${TAG} && sudo docker run -d --name ${DOCKER_NAME} -p 8900:80 ${IMAGE_NAME}:${TAG}"
+                            ansible ${GIT_BRANCH} -i inventory.ini -m shell -a "sudo docker pull ${IMAGE_NAME}:${TAG} && sudo docker run -d --name ${DOCKER_NAME} -p ${PORT}:80 ${IMAGE_NAME}:${TAG}"
                         '''
                         
                 }
