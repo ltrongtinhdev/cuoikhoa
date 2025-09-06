@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        GIT_BRANCH = "main" // Nhanh git build
+        GIT_BRANCH = "qa" // Nhanh git build
         GIT_REPO_NAME = "github.com/ltrongtinhdev/bt5"
         TELEGRAM_BOT_TOKEN = credentials('telegram-token') // Telegram bot access token
         TELEGRAM_CHAT_ID = credentials('telegram-chat-id') // Telegram bot chat id
@@ -11,7 +11,7 @@ pipeline {
         TAG = "${GIT_BRANCH}"."${VERSION}.${env.BUILD_NUMBER}"
         IMAGE_NAME = "${DOCKER_ENDPOINT}/${DOCKER_NAME}"
         SSH_USER = "admin01"
-        PORT = 8900
+        PORT = 8901
     }
     stages {
         stage('Clone Repository') {
